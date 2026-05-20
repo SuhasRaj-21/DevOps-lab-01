@@ -5,7 +5,7 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                bat 'py -m pip install -r requirements.txt'
+                bat 'C:\Users\suhas\Desktop\udbhav main stage day 2\INTER POSTER DAY 2 -m pip install -r requirements.txt'
             }
         }
 
