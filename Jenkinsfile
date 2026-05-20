@@ -7,22 +7,15 @@ pipeline {
 
     stages {
 
-        stage('Clone GitHub Repo') {
-            steps {
-                git branch: 'main',
-                url: 'https://github.com/SuhasRaj-21/DevOps-lab-01.git'
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
-                bat 'pip install -r requirements.txt'
+                bat 'python -m pip install -r requirements.txt'
             }
         }
 
         stage('Dependency Check') {
             steps {
-                bat 'pip list'
+                bat 'python -m pip list'
             }
         }
 
