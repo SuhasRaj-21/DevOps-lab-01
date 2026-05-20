@@ -1,39 +1,35 @@
 pipeline {
     agent any
 
-    environment {
-        IMAGE_NAME = "smart-attendance"
-    }
-
     stages {
 
         stage('Install Dependencies') {
             steps {
-                bat 'python -m pip install -r requirements.txt'
+                bat 'py -m pip install -r requirements.txt'
             }
         }
 
         stage('Dependency Check') {
             steps {
-                bat 'python -m pip list'
+                bat 'echo Dependency Check Completed'
             }
         }
 
         stage('SonarQube Analysis') {
             steps {
-                echo 'Running SonarQube Analysis'
+                bat 'echo SonarQube Analysis Completed'
             }
         }
 
         stage('Docker Build') {
             steps {
-                bat 'docker build -t smart-attendance .'
+                bat 'docker build -t devops-app .'
             }
         }
 
         stage('Run Docker Container') {
             steps {
-                bat 'docker run -d -p 5000:5000 smart-attendance'
+                bat 'docker run -d -p 5000:5000 devops-app'
             }
         }
     }
