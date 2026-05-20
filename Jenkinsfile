@@ -1,17 +1,28 @@
 pipeline {
     agent any
 
+    environment {
+        IMAGE_NAME = "smart-attendance"
+    }
+
     stages {
 
         stage('Clone GitHub Repo') {
             steps {
-                git 'https://github.com/SuhasRaj-21/DevOps-lab-01.git'
+                git branch: 'main',
+                url: 'https://github.com/SuhasRaj-21/DevOps-lab-01.git'
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                sh 'pip install -r requirements.txt'
+                bat 'pip install -r requirements.txt'
+            }
+        }
+
+        stage('Dependency Check') {
+            steps {
+                bat 'pip list'
             }
         }
 
@@ -23,13 +34,13 @@ pipeline {
 
         stage('Docker Build') {
             steps {
-                sh 'docker build -t smart-attendance .'
+                bat 'docker build -t smart-attendance .'
             }
         }
 
         stage('Run Docker Container') {
             steps {
-                sh 'docker run -d -p 5000:5000 smart-attendance'
+                bat 'docker run -d -p 5000:5000 smart-attendance'
             }
         }
     }
