@@ -5,19 +5,13 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                bat 'C:\Users\suhas\Desktop\udbhav main stage day 2\INTER POSTER DAY 2 -m pip install -r requirements.txt'
+                bat '"C:\\Users\\suhas\\AppData\\Local\\Programs\\Python\\Python314\\python.exe" -m pip install -r requirements.txt'
             }
         }
 
         stage('Dependency Check') {
             steps {
                 bat 'echo Dependency Check Completed'
-            }
-        }
-
-        stage('SonarQube Analysis') {
-            steps {
-                bat 'echo SonarQube Analysis Completed'
             }
         }
 
